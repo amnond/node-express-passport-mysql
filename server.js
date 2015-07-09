@@ -15,9 +15,9 @@ var flash    = require('connect-flash');
 //global._t    = require('./translate');
 var translate = require('./translate').translate;
 
+global.session_lang = function() { return 'en'; } // TODO: base it on the session language, sub-domain, etc.
 global._t = function(text) {
-    var session_lang = 'he';  // TODO: base it on the session language, sub-domain, etc.
-    return translate(text, session_lang);
+    return translate(text, session_lang());
 }
 
 // configuration ===============================================================
