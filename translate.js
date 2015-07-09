@@ -3,9 +3,8 @@ exports.translate = function(text, lang) {
     var dicts = {};
 
     dicts['he'] = {
-        "hello":"שלום",
-        "dog":"כלב",
-        "cat":"חתול",
+        "Username":"שם משתמש",
+        "Password":"סיסמה",
         "Login":"כניסה למערכת"
     };
 

@@ -13,7 +13,12 @@ var port     = process.env.PORT || 8080;
 var passport = require('passport');
 var flash    = require('connect-flash');
 //global._t    = require('./translate');
-global._t    = require('./translate').translate;
+var translate = require('./translate').translate;
+
+global._t = function(text) {
+    var session_lang = 'he';  // TODO: base it on the session language, sub-domain, etc.
+    return translate(text, session_lang);
+}
 
 // configuration ===============================================================
 // connect to our database
