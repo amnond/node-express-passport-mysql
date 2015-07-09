@@ -12,18 +12,18 @@ module.exports = function(app, passport) {
 	// LOGIN ===============================
 	// =====================================
 	// show the login form
-	app.get('/login', function(req, res) {
+	app.get('/index', function(req, res) {
 
 		// render the page and pass in any flash data if it exists
-		res.render('login.ejs', { message: req.flash('loginMessage') });
+		res.render('index.ejs', { message: req.flash('loginMessage') });
 	});
 
 	// process the login form
-	app.post('/login', passport.authenticate('local-login', {
+	app.post('/index', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/index', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
-		}),
+		})/*,
         function(req, res) {
             console.log("hello");
 
@@ -32,8 +32,9 @@ module.exports = function(app, passport) {
             } else {
               req.session.cookie.expires = false;
             }
-        res.redirect('/');
-    });
+            res.redirect('/');
+        }*/  
+    );
 
 	// =====================================
 	// SIGNUP ==============================
@@ -60,6 +61,12 @@ module.exports = function(app, passport) {
 		res.render('profile.ejs', {
 			user : req.user // get the user out of session and pass to template
 		});
+	});
+
+
+	app.get('/secured', isLoggedIn, function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('secured.ejs', { message: 'cool, dude' });
 	});
 
 	// =====================================

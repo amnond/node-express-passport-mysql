@@ -2,9 +2,9 @@
 module.exports = {
     'connection': {
         'host': 'localhost',
-        'user': 'root',
-        'password': 'password'
+        'user': 'naturongo',
+        'password': 'ognorutan'
     },
-	'database': 'my_schema',
+	'database': 'naturongo',
     'users_table': 'users'
 };
